@@ -7,7 +7,20 @@
 // 2*2=4
 // 2/2=1
 
-firstNumber = prompt(`Enter first number`);
-secondNumber = prompt(`Enter second number`);
+firstNumber = +prompt(`Enter first number`);
+secondNumber = +prompt(`Enter second number`);
 
-alert(firstNumber-secondNumber);
+sumN = firstNumber + secondNumber;
+minusN = firstNumber - secondNumber;
+splitN = firstNumber / secondNumber;
+multiplyN = firstNumber * secondNumber;
+
+
+alert(`User enter: ${firstNumber} and ${secondNumber}
+${firstNumber} + ${secondNumber} =  ${sumN}
+${firstNumber} - ${secondNumber} =  ${minusN}
+${firstNumber} / ${secondNumber} =  ${splitN}
+${firstNumber} * ${secondNumber} =  ${multiplyN}`);
+
+
+
