@@ -16,7 +16,7 @@ splitN = firstNumber / secondNumber;
 multiplyN = firstNumber * secondNumber;
 
 
-alert(`User enter: ${firstNumber} and ${secondNumber}
+alert(`User enter numbers: ${firstNumber} and ${secondNumber}
 ${firstNumber} + ${secondNumber} =  ${sumN}
 ${firstNumber} - ${secondNumber} =  ${minusN}
 ${firstNumber} / ${secondNumber} =  ${splitN}
