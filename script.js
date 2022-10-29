@@ -17,10 +17,10 @@ multiplyN = firstNumber * secondNumber;
 
 
 alert(`User entered numbers: ${firstNumber} and ${secondNumber}
-${firstNumber} + ${secondNumber} =  ${sumN}
-${firstNumber} - ${secondNumber} =  ${minusN}
-${firstNumber} / ${secondNumber} =  ${splitN}
-${firstNumber} * ${secondNumber} =  ${multiplyN}`);
+${firstNumber}+${secondNumber}=${sumN}
+${firstNumber}-${secondNumber}=${minusN}
+${firstNumber}/${secondNumber}=${splitN}
+${firstNumber}*${secondNumber}=${multiplyN}`);
 
 
 
