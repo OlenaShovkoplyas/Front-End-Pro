@@ -10,3 +10,12 @@ console.log(' number is Ba_NaN')
 } else {
 console.log('OK!')
 }
+
+switch (key) {
+    case value:
+        
+        break;
+
+    default:
+        break;
+}
