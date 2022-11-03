@@ -8,6 +8,8 @@ number1 = +prompt("Enter firs Number");
 number2 = +prompt("Enter second Number");
 number3 = +prompt("Enter third Number");
 
-averageN = (number1 + number2 + number3)/3;
+averageN = parseInt((number1 + number2 + number3)/3);
 
 alert( `Arithmetic mean = ${averageN}`);
+
+
