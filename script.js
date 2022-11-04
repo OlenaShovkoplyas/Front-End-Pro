@@ -30,7 +30,8 @@ switch (true) {
         break;
 
     default:
-        console.log('OK!');}
+        console.log('OK!');
+    }
       
 
   
