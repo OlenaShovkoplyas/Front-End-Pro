@@ -19,17 +19,16 @@ point = 0;
 answer = 0;
 
 question1 = prompt("How much will be 2+2?").toLowerCase().trim();
-    if (question1 === `4` || question1 === `four` || question1 === `чотири` || question1 === `четыре`) {
+    if (question1 === "4" || question1 === "four" || question1 === "чотири" || question1 === "четыре") {
         point = point + 10 
         answer = answer + 1
         alert(`Good job!`);
     } else {
         alert( `Oh no no! Your answer is wrong`);
         }
-
     
 question2 = prompt("The sun rises in the east?").toLowerCase().trim();
-    if (question2 === `yes` || question2 === `true` || question2 === `да` || question2 === `так` || question2 === `east`) {
+    if (question2 === "yes" || question2 === "true" || question2 === "да" || question2 === "так" || question2 === "east") {
         point += 10 
         answer += 1
         alert(`You simply the best!`);
@@ -37,9 +36,8 @@ question2 = prompt("The sun rises in the east?").toLowerCase().trim();
         alert( `Your answer is wrong! It is realy rise on East`);
         }
 
-
 question3 = prompt("How much will be 5 / 10 ?").toLowerCase().trim();
-    if (question3 === `1/2` || question3 === `0.5`) {
+    if (question3 === "1/2" || question3 === "0.5") {
         point += 10 
         answer += 1
         alert(`Oh yeh!`);
@@ -48,7 +46,7 @@ question3 = prompt("How much will be 5 / 10 ?").toLowerCase().trim();
         }
 
 question4 = prompt("What came first: egg or chicken?").toLowerCase().trim();
-    if (question4 === `egg` || question4 === `chicken`) {
+    if (question4 === "egg" || question4 === "chicken") {
         point += 10 
         answer += 1
         alert(`Yeh, yeh, there is no wrong answer! Good for you, ha!?`);
@@ -56,9 +54,18 @@ question4 = prompt("What came first: egg or chicken?").toLowerCase().trim();
         alert( `That was hard not to guess! But you are the lucky one!`);
         }
 
+question5 = prompt("Is watermelon a berry or a fruit?").toLowerCase().trim();
+    if (question5 === "berry") {
+        point += 10 
+        answer += 1
+        alert(`Correct! Bellissimo!`);
+    } else {
+        alert( `Realy!? It is a berry, pal! Because of the bones inside`);
+        }
+
 alert(`That was good chelenge! 
 You have ${point} points.
-You answered correctly for ${answer} question from 5`)
+You answered correctly for ${answer} question from 5`);
 
     
 
