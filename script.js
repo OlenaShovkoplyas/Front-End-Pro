@@ -67,8 +67,3 @@ alert(`That was good chelenge!
 You have ${point} points.
 You answered correctly for ${answer} question from 5`);
 
-    
-
-
-
-
