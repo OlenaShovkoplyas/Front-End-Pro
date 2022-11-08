@@ -2,7 +2,7 @@
 // Запустить цикл перебора от a до b с шагом h (ввод с клавиатуры). 
 // Посчитать сумму факториалов* чисел которые попадаются во время перебора.
 
-
+sum = 0;
 do {
     firstNumber = parseInt(prompt("Enter your first number"));
     secondNumber = parseInt(prompt("Enter your second number"));
@@ -23,13 +23,14 @@ do {
    } while (!correctStep);
 
 
-   for(firstNumber; firstNumber <= secondNumber; firstNumber += step) {
+   for(i = firstNumber; i <= secondNumber; i += step) {
         factorial = 1;
         
-        for(j = firstNumber; j >= 1; j++) {
+        for(j = 1; j <= i; j++) {
             factorial *= j;
         }
-        sum += factorial;
+        sum  += factorial;
     }
 
 alert (`Sum of factorials is ${sum}`);
+
