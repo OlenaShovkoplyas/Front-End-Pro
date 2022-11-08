@@ -22,15 +22,14 @@ do {
     }
    } while (!correctStep);
 
-
    for(i = firstNumber; i <= secondNumber; i += step) {
         factorial = 1;
         
         for(j = 1; j <= i; j++) {
             factorial *= j;
         }
-        sum  += factorial;
+        
+        sum += factorial;
     }
 
 alert (`Sum of factorials is ${sum}`);
-
