@@ -24,11 +24,13 @@ do {
 
    for(i = firstNumber; i <= secondNumber; i += step) {
         factorial = 1;
+        // console.log(`First loop ${i}`);
         
-        for(j = 1; j <= i; j++) {
+        for(j = firstNumber; j <= i; j++) {
             factorial *= j;
         }
-        
+        // console.log(`Second loop: from first ${i}; from second ${j}`);
+        // console.log(factorial);
         sum += factorial;
     }
 
