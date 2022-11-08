@@ -6,7 +6,7 @@ sum = 0;
 do {
     firstNumber = parseInt(prompt("Enter your first number"));
     secondNumber = parseInt(prompt("Enter your second number"));
-    correctNumbers = firstNumber >=0 && secondNumber > firstNumber
+    correctNumbers = firstNumber >= 0 && secondNumber > firstNumber
    
     if (!correctNumbers) {
         alert (`Enter correct number! First number must be >=0, and the second must be more, then the first one`);
