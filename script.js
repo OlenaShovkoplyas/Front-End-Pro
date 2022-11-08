@@ -84,9 +84,7 @@ switch (getAction) {
                 result /= number;
             }
         }
-
         break;
-
 }
 
 alert(`Result of calculation is: ${result}`);
