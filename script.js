@@ -64,11 +64,9 @@ if (category === "vegetables") {
          } while (product !== "grapes" &&  product !== "raspberry" &&  product !== "coconut");
     }
 
-   if (category === "vegetables") {
-    productImg = `<img src="img/vegetables/${product}.svg" alt="${product} width="100px" height="100px"></img>`;
-   } else {
-    productImg = `<img src="img/fruits/${product}.svg" alt="${product} width="100px" height="100px"></img>`;
-   }
+   
+    productImg = `<img src="img/${product}.svg" alt="${product} width="100px" height="100px"></img>`;
+  
     
 // Запрашиваем у пользователя количество единиц ранее выбранного товара.
 // Введенное значение должно быть числом и не меньше 1.
