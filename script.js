@@ -10,82 +10,117 @@
 // 4) С помощью alert или console.log выводим финальный результат действия (+ - / *).
 
 
+do{
+    operation = prompt("Выберите операцию (+ - / *)")
+} while(operation !== "+" && operation !== "-" && operation !== "/" && operation !== "*" );
 
-do { 
-    getAction = prompt("Enter mathematical action you need (+ - / *):");
-    correctAction = getAction === "+" || getAction === "-" || getAction === "*" || getAction === "/";
-    if (!correctAction) {
-         alert("Entered action has wrong format");
-    }
-} while (!correctAction);
+do{
+    countOfOperands = parseInt(prompt("Сколько чисел Вы хотите использовать?").replaceAll(" ", ""));
+} while(countOfOperands >= 7 || countOfOperands <= 1 || isNaN(countOfOperands));
 
-do { 
-    getOperands = parseInt(prompt("Enter number of operands you need (from 1 to 7):"));
-    operandsNumber = getOperands >= 1 && getOperands <= 7;
-    if (!operandsNumber) {
-         alert("Entered wrong amount of operands");
-    }
-} while (!operandsNumber);
 
 result = 0;
-
-switch (getAction) {
-    case "+":
-        for (i = 1; i <= getOperands; i++) {
-            do {
-                number = parseInt(prompt(`Emtern ${i} numer for operation`));
-            } while (isNaN(number));
-
-            result += number;
-        }
-    break;  
-
-    case "-":
-        for (i = 1; i <= getOperands; i++) {
-            do {
-                number = parseInt(prompt(`Emtern ${i} numer for operation`));
-            } while (isNaN(number));
-            if (i === 1) {
-                result = number;
-            } else {
-                result -= number;
-            }
-        }
-    break;  
+for(i = 1; i <= countOfOperands; i++){
+    do {
+        number = parseInt(prompt(`Введите число ${i}`).replaceAll(" ", ""));
+    } while(isNaN(number))
     
-    case "*":
-        result = 1;
-
-        for (i = 1; i <= getOperands; i++) {
-            do {
-                number = parseInt(prompt(`Emtern ${i} numer for operation`))
-            }
-            while (isNaN(number));
-
+    switch(operation) {
+        case "+":
+            result += number;
+            break;
+        case "-":
+            result = i === 1 ? number : result - number;
+            break;
+        case "*":
+            if(i === 1) result = 1;
             result *= number;
-        }
-        break;
-
-    case "/":
-        for (i = 1; i <= getOperands; i++) {
-            do {
-                number = parseInt(prompt(`Emtern ${i} numer for operation`))
-
-                if (number === 0) {
-                    alert("Error! You can't divide by 0!!!")
-                }
-            }
-            while (number === 0 || isNaN(number));
-
-            if (i === 1) {
-                result = number;
-            }
-            else {
-                result /= number;
-            }
-        }
-        break;
+            break;
+        case "/":
+            result = i === 1 ? number : result / number;
+            break;
+    }
 }
+
+alert(result);
+
+//My long first version
+
+// do { 
+//     getAction = prompt("Enter mathematical action you need (+ - / *):");
+//     correctAction = getAction === "+" || getAction === "-" || getAction === "*" || getAction === "/";
+//     if (!correctAction) {
+//          alert("Entered action has wrong format");
+//     }
+// } while (!correctAction);
+
+// do { 
+//     getOperands = parseInt(prompt("Enter number of operands you need (from 1 to 7):"));
+//     operandsNumber = getOperands >= 1 && getOperands <= 7;
+//     if (!operandsNumber) {
+//          alert("Entered wrong amount of operands");
+//     }
+// } while (!operandsNumber);
+
+// result = 0;
+
+// switch (getAction) {
+//     case "+":
+//         for (i = 1; i <= getOperands; i++) {
+//             do {
+//                 number = parseInt(prompt(`Emtern ${i} numer for operation`));
+//             } while (isNaN(number));
+
+//             result += number;
+//         }
+//     break;  
+
+//     case "-":
+//         for (i = 1; i <= getOperands; i++) {
+//             do {
+//                 number = parseInt(prompt(`Emtern ${i} numer for operation`));
+//             } while (isNaN(number));
+//             if (i === 1) {
+//                 result = number;
+//             } else {
+//                 result -= number;
+//             }
+//         }
+//     break;  
+    
+//     case "*":
+//         result = 1;
+
+//         for (i = 1; i <= getOperands; i++) {
+//             do {
+//                 number = parseInt(prompt(`Emtern ${i} numer for operation`))
+//             }
+//             while (isNaN(number));
+
+//             result *= number;
+//         }
+//         break;
+
+//     case "/":
+//         for (i = 1; i <= getOperands; i++) {
+//             do {
+//                 number = parseInt(prompt(`Emtern ${i} numer for operation`))
+
+//                 if (number === 0) {
+//                     alert("Error! You can't divide by 0!!!")
+//                 }
+//             }
+//             while (number === 0 || isNaN(number));
+
+//             if (i === 1) {
+//                 result = number;
+//             }
+//             else {
+//                 result /= number;
+//             }
+//         }
+//         break;
+// }
 
 alert(`Result of calculation is: ${result}`);
 
