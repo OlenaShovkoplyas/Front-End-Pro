@@ -15,7 +15,7 @@ fruits = ['grapes', 'raspberry', 'coconut'];
 vegetablesPrice = [8, 30, 10];
 fruitsPrice = [20, 25, 50];
 
-finalSum = 0;
+finalSum = 1;
 
 // Задача: в зависимости от выбранного пользователем периода (winter или summer), категории (vegetables или fruits), товара с выбранной категории (vegetables: cabbage, avocado, tomato или fruits: grapes, raspberry, coconut), и количества единиц выбранного товара – посчитать финальную стоимость покупки и вывести всю информацию о выбранном товаре в html.
 // Порядок действий:
@@ -53,24 +53,28 @@ do {
 if (category === "vegetables") {
     do {
         product = prompt("Choose product from category Vegetables: Cabbage, Avocado or Tomato.").toLowerCase().replaceAll(" ", "");
-        typeOfVegetable = vegetables[product];
+        typeOfVegetable = vegetables.indexOf(product);
         productPrice = vegetablesPrice[typeOfVegetable];
      } while (product !== "cabbage" &&  product !== "avocado" &&  product !== "tomato"); 
     } else {
         do {
             product = prompt("Choose product from category Fruits: Grapes, Raspberry or Coconut.").toLowerCase().replaceAll(" ", "");
-            typeOfFruit = fruits[product];
+            typeOfFruit = fruits.indexOf(product);
             productPrice = fruitsPrice[typeOfFruit];
          } while (product !== "grapes" &&  product !== "raspberry" &&  product !== "coconut");
     }
 
-    productImg = `img src="img/${product}.svg" alt="${product} width="50px" height="50px"`;
-
+   if (category === "vegetables") {
+    productImg = `<img src="img/vegetables/${product}.svg" alt="${product} width="100px" height="100px"></img>`;
+   } else {
+    productImg = `<img src="img/fruits/${product}.svg" alt="${product} width="100px" height="100px"></img>`;
+   }
+    
 // Запрашиваем у пользователя количество единиц ранее выбранного товара.
 // Введенное значение должно быть числом и не меньше 1.
 
 do {
-    amountOfProduct = parseInt(prompt(`Enter count of ${product}`).replaceAll(" ", ""));
+    amountOfProduct = parseInt(prompt(`Enter amount of ${product}`).replaceAll(" ", ""));
 } while (isNaN(amountOfProduct) && amountOfProduct >= 1);
 
 finalSum = amountOfProduct * productPrice * index;
@@ -88,12 +92,12 @@ finalSum = amountOfProduct * productPrice * index;
 
 document.write(
     `<div class="product" align="center">
-   ${productImg}
-    <p>Selected product: <b>${product}</b></p>
-    <p>Count of ${product}: <b>${amountOfProduct}</b></p>
-    <p>Selected period: <b>${yerPeriod}</b></p>
-    <p>Selected category: <b>${category}</b></p>
-    <p>Final sum: <b>${finalSum} UAH</b></p>
+        ${productImg}
+        <p>Selected product: <b>${product}</b></p>
+        <p>Count of ${product}: <b>${amountOfProduct}</b></p>
+        <p>Selected period: <b>${yerPeriod}</b></p>
+        <p>Selected category: <b>${category}</b></p>
+        <p>Final sum: <b>${finalSum} UAH</b></p>
     </div>`
 )
 
