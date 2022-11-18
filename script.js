@@ -26,7 +26,7 @@ do {
         factorial = 1;
         // console.log(`First loop ${i}`);
         
-        for(j = firstNumber; j <= i; j++) {
+        for(j = 0; j <= i; j++) {
             factorial *= j;
         }
         // console.log(`Second loop: from first ${i}; from second ${j}`);
