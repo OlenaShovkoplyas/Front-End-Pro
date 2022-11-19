@@ -17,52 +17,58 @@ sports = [
 	['bicyclist','🚴‍']
 ];
 
-// //Первый вариант
-// winter_sports = sports.slice(0, 5);
-// winter_sports.splice(2, 1);
-// console.log(`*** WINTER SPORTS *** 
-// ${winter_sports}`);  // skier,⛷,snowboarder,🏂,hockey,🏒,ice skate,⛸
-
-
-// summer_sports = sports.slice(5, 11);
-// summer_sports.splice(2, 2);
-// console.log(`***SUMMER SPORTS ***
-// ${summer_sports}`); //swimmer,🏊,surfer,🏄‍,rowboat,🚣,bicyclist,🚴‍
-
-// fruits = sports.slice(2, 9);
-// fruits.splice(1, 4);
-// console.log(`*** FRUITS *** 
-// ${fruits}`);  //apple,🍎,watermelon,🍉,lemon,🍋
-
-
-//Способ 2 под шаблон (подозреваю, что есть вариант более простого разделения подмассивов, но не догнала. 
-// Не получилось через сплит и выбор парных элементов)
 winter_sports = sports.slice(0, 5);
-winter_sports.splice(2, 1);
+winter_sports.splice(2, 1);    // skier,⛷,snowboarder,🏂,hockey,🏒,ice skate,⛸
+winter = winter_sports.flat();
+winterName = [];
+winterImg = [];
 
-winterName = ['skier', 'snowboarder', 'hockey', 'ice skate'];
-winterImg = ['⛷', '🏂', '🏒', '⛸'];
+for (i = 0; i < winter.length; i++) {
+	if (i % 2 == 0) {
+		winterName.push(winter[i]);
+	}  else {
+		winterImg.push(winter[i]);	
+	}
+}
+
 console.log(`*** WINTER SPORTS ***`);
 for(i = 0; i < winterName.length; i++) {
     console.log(`${winterName[i]} : ${winterImg[i]}`);
 }
 
 summer_sports = sports.slice(5, 11);
-summer_sports.splice(2, 2);
+summer_sports.splice(2, 2);     // swimmer,🏊,surfer,🏄‍,rowboat,🚣,bicyclist,🚴‍
+summer = summer_sports.flat();
+summerName = [];
+summerImg = [];
 
-summerName = ['swimmer', 'surfer', 'rowboat', 'bicyclist'];
-summerImg = ['🏊', '🏄', '🚣', '🚴'];
+for (i = 0; i < summer.length; i++) {
+	if (i % 2 == 0) {
+		summerName.push(summer[i]);
+	}  else {
+		summerImg.push(summer[i]);	
+	}
+}
 console.log(`*** SUMMER SPORTS ***`);
 for(i = 0; i < summerName.length; i++) {
     console.log(`${summerName[i]} : ${summerImg[i]}`);
 }
 
-fruits = sports.slice(2, 9);
-fruits.splice(1, 4);
 
-fruitsrName = ['apple', 'watermelon', 'lemon'];
-fruitsImg = ['🍎', '🍉', '🍋'];
+fruits = sports.slice(2, 9);
+fruits.splice(1, 4);      //apple,🍎,watermelon,🍉,lemon,🍋
+fruitsLine = fruits.flat();
+fruitsName = [];
+fruitsImg = [];
+
+for (i = 0; i < fruitsLine.length; i++) {
+	if (i % 2 == 0) {
+		fruitsName.push(fruitsLine[i]);
+	}  else {
+		fruitsImg.push(fruitsLine[i]);	
+	}
+}
 console.log(`*** FRUITS ***`);
-for(i = 0; i < fruitsrName.length; i++) {
-    console.log(`${fruitsrName[i]} : ${fruitsImg[i]}`);
+for(i = 0; i < fruitsName.length; i++) {
+    console.log(`${fruitsName[i]} : ${fruitsImg[i]}`);
 }
