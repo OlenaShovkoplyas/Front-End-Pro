@@ -4,10 +4,18 @@
 // sum(5) = 8
 // sum(20) = 28
 
-// let getAdder = function () { let res = 0; return function(x) { res += x; return res; } };
-// let sum = getAdder();
-// sum(1); // 1
-// sum(3); // 4
-// let sum2 = getAdder(); // два независимых сумматора
-// sum2(1); //1
-// sum2(3); // 4
+function getSum(){
+  let result = 0;
+  return function (x) {
+    return result +=x;
+  }
+}
+
+const sum = getSum();
+
+console.log(sum(5));
+console.log(sum(15));
+console.log(sum(20));
+
+
+
