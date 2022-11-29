@@ -11,8 +11,9 @@ function copy(list, func){
     return result;
 }
 
-let list = [1,2,3];
-let newList = copy(list, function(value){return value * 10;});
+let list = [1, 2, 3, [2, 4]];
+let newList = copy(list, function(value){
+    return value;});
 
 console.log(list);
 console.log(newList);
