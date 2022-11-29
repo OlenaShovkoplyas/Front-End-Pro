@@ -12,16 +12,19 @@
 
 
 function main (a = 2, b = 3, c) {
+
+  let result = sum(a, b);
+  
   if(typeof(c) === 'function')
-    return c(sum(a, b));
+    return c (result);
   else 
-    return sum(a, b);
+    return result;
+}
+function sum (a, b) {     
+  return a + b; 
+}
+function random (a) { 
+  return a * 2; 
 }
 
-function sum (a, b) { 
-    return a + b; 
-}
-
-console.log(main(12, 18, function(a){
-  return a*10;
-}))
+console.log(main(12, 18, random));
