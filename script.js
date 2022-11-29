@@ -20,3 +20,17 @@ console.log(newList);
 // function copy(list, func){
 //     return list.map(func);
 // }
+
+
+// function cloneArray(arr) {
+//     const copyArr = [];
+//     for(let i = 0; i < arr.length; i++) {
+//         if(Array.isArray(arr[i])) {
+//             copyArr.push(arr[i].slice());
+//         } else {
+//             copyArr.push(arr[i]);
+//         }
+//     }
+
+//     return copyArr;
+// }
