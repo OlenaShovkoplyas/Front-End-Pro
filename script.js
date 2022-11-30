@@ -4,34 +4,26 @@
 
 // newList = copy(list, function(value){ return value*10; })
 
-function copy(list, func){
-    let result = [];
-    for(let i = 0; i < list.length; i++)
-        result[i] = func(list[i]);
-    return result;
+// let a = 8
+// function value (a) { 
+//     return a * 10;
+// } 
+
+arr = [[1,2,3,4], 45];
+
+function cloneArrayFunction(list, func){
+    const copyArr = [];
+    for(let i = 0; i < arr.length; i++) {
+        if(typeof function () {} === "function"){
+        copyArr.push(i);
+        cloneArrayFunction(i);
+    } if(Array.isArray(arr[i])) {
+        copyArr.push(arr[i].slice());
+    } else {
+        copyArr.push(arr[i]);
+        return copyArr;   
+        cloneArrayFunction =  copyArr;
+    } 
+  }
+  console.log(copyArr);
 }
-
-let list = [1, 2, 3, [2, 4]];
-let newList = copy(list, function(value){
-    return value;});
-
-console.log(list);
-console.log(newList);
-
-// function copy(list, func){
-//     return list.map(func);
-// }
-
-
-// function cloneArray(arr) {
-//     const copyArr = [];
-//     for(let i = 0; i < arr.length; i++) {
-//         if(Array.isArray(arr[i])) {
-//             copyArr.push(arr[i].slice());
-//         } else {
-//             copyArr.push(arr[i]);
-//         }
-//     }
-
-//     return copyArr;
-// }
