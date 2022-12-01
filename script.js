@@ -6,7 +6,11 @@
 
 
 
-const list = [1, 3, 8, [1,2,3,4], 45, 'a'];
+const list = [1, 3, 8, 'true', 45, 'a', 'lion'];
+
+function random (a) { 
+    return a * 25; 
+  }
 
 function copy(list, func){
     const newList = [];
@@ -19,13 +23,4 @@ function copy(list, func){
         return newList;
     }
 
-    function copyArrayFunction(value) {
-        console.log(value);
-    }
-    let a = 8
     
-  
- newList = copy(list, function (value) { return value * 10; }); 
- a = copy(list, copyArrayFunction);
- b = copy(newList);
- c = copy([2, 3, 4]);
