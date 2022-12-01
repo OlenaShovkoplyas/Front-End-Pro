@@ -26,7 +26,3 @@ function value (a) {
   }
 
 console.log(copy(list, value));
-       
-
-
-    
