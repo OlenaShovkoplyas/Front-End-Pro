@@ -6,21 +6,27 @@
 
 
 
-const list = [1, 3, 8, 'true', 45, 'a', 'lion'];
+const list = [1, 'string', 8, 12, true, 45, function f() {}, 'lion'];
 
-function random (a) { 
+function copy(list, func){
+
+    const copyList = list.slice();
+
+    if(typeof(func) === 'function'){
+        for(let i = 0; i < list.length; i++){
+            if(typeof copyList[i] === 'number') 
+            copyList[i] = func(copyList[i]);
+          }
+      }
+       return copyList;
+  }
+
+function value (a) { 
     return a * 25; 
   }
 
-function copy(list, func){
-    const newList = [];
-    for(let i = 0; i < list.length; i++) {
-        if(typeof(func) === 'function'){
-            func(list[i]);
-        }
-        newList.push(list[i]);
-        }
-        return newList;
-    }
+console.log(copy(list, value));
+       
+
 
     
