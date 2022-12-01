@@ -13,13 +13,13 @@ function getSumOfArray(arr) {
    let arrSum = 0;
 
     for (let i = 0; i < arr.length; i++) {
-        if (!isNaN(arr[i])) {
+        if (typeof arr[i] === 'number') {
             arrSum += arr[i];
         }
     }
     return arrSum;
    }
-//    console.log(getSumOfArray(a));
+// console.log(getSumOfArray(a));
 
 function getBiggerArraySum(arr1, arr2) {
     let sum1 = getSumOfArray(arr1);
@@ -28,6 +28,3 @@ function getBiggerArraySum(arr1, arr2) {
 }
 
 console.log(getBiggerArraySum(a, b));
-
-    
-
