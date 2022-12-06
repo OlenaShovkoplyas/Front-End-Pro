@@ -82,4 +82,4 @@ arr.map(function(number, i) {
   arr[i] = number === maxNumber ? number : 0;  
   return arr;  
 })
-console.log(`Here is a maximum element in arrey ${arr}`);
+console.log(`An array with just a maximum number ${arr}`);
