@@ -78,7 +78,8 @@ console.log(`Sum of positive numbers is ${multiply}`);
 
 
 // 10. Знайти найбільший серед елементів масиву, решта обнулити.
-arr.forEach(function(number, i) {
-    arr[i] = number === maxNumber ? number : 0;  
+arr.map(function(number, i) {
+  arr[i] = number === maxNumber ? number : 0;  
+  return arr;  
 })
-console.log(`The maximum element from array is ${arr}`);
+console.log(`Here is a maximum element in arrey ${arr}`);
