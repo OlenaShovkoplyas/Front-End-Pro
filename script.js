@@ -20,8 +20,7 @@ const newArr = monday.concat(tuesday)
 })
 
 .filter(function(task) {       // Оставить только те задачи, на выполнение которых нужно более 2-х часов.
-  task[1] > 2;
-  return task;
+  return task[1] > 2;
   })
   
 .map(function(task) {            // Умножить результат на часовую ставку (amount) и добавить полученное значение в качестве третъего элемента в массив.
@@ -37,7 +36,8 @@ const newArr = monday.concat(tuesday)
       <td>Task amount: ${task[2]}$</td>
     </tr>`
   })
-  .join("");
+
+  .join("  ");
 
 
 document.write(`
