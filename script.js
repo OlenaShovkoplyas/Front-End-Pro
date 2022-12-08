@@ -23,7 +23,7 @@ const newArr = monday.concat(tuesday)
   task.push(taskAmount);
   return task;
   })  
-.map(function(task){
+.map(function(task) {
   return `
     <tr>
       <td>Task name: ${task[0]}</td>
