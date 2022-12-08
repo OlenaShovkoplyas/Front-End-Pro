@@ -11,34 +11,27 @@ let tuesday = [
 ];
 
 const newArr = monday.concat(tuesday)
-
-// console.log(newArr);
-
 .map(function(task) {     // Сконвертировать время потраченное на выполнение задач в часы, вместо минут.
   task[1] = task[1] / 60;    
   return task; 
 })
-
 .filter(function(task) {       // Оставить только те задачи, на выполнение которых нужно более 2-х часов.
   return task[1] > 2;
-  })
-  
+  })  
 .map(function(task) {            // Умножить результат на часовую ставку (amount) и добавить полученное значение в качестве третъего элемента в массив.
   const taskAmount = task[1] * amount;
   task.push(taskAmount);
   return task;
-  })
-  
+  })  
 .map(function(task){
-  return `<tr>
+  return `
+    <tr>
       <td>Task name: ${task[0]}</td>
       <td>Taks duration: ${task[1]} hours</td>
       <td>Task amount: ${task[2]}$</td>
     </tr>`
   })
-
-  .join("  ");
-
+  .join(" ");
 
 document.write(`
 <table>
