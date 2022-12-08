@@ -15,7 +15,7 @@ const newArr = monday.concat(tuesday)
 // console.log(newArr);
 
 .map(function(task) {     // Сконвертировать время потраченное на выполнение задач в часы, вместо минут.
-  task[1] = task[1]/60;    
+  task[1] = task[1] / 60;    
   return task; 
 })
 
@@ -25,7 +25,8 @@ const newArr = monday.concat(tuesday)
   })
   
 .map(function(task) {            // Умножить результат на часовую ставку (amount) и добавить полученное значение в качестве третъего элемента в массив.
-  task.push(task[1] * amount);
+  const taskAmount = task[1] * amount;
+  task.push(taskAmount);
   return task;
   })
   
@@ -37,14 +38,10 @@ const newArr = monday.concat(tuesday)
       <td>Task amount: ${task[2]}$</td>
     </tr>`
   })
-  .join(" ");
-    
+  .join("");
 
 
 document.write(`
 <table>
 <tbody>${newArr}</tbody>
 </table>`)
-
-
-
