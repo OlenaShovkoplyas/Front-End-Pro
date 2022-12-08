@@ -31,8 +31,7 @@ const newArr = monday.concat(tuesday)
   })
   
 .map(function(task){
-  return
-    `<tr>
+  return `<tr>
       <td>Task name: ${task[0]}</td>
       <td>Taks duration: ${task[1]} hours</td>
       <td>Task amount: ${task[2]}$</td>
