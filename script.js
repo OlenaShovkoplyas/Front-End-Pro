@@ -22,36 +22,37 @@ const obj = {
     }
 };
 
-// function convert(obj) {   
-//     getProp(obj);
-//         function getProp(obj) {
-//         for(let key in obj) {
-//             if(typeof(obj[key]) === 'object') {
-//                 copy = getProp(obj[key]),
-//                 delete obj[key];                                        
-//             }   
-//             return obj[key];                     
-//         }     
-//         return Object.assign(obj, copy);           
-//     }     
-   
-// }
-
-// const newObj = convert(obj);   
-// console.log(newObj);
-
-function convert(object) {
-    for (let key in obj){
-        if (typeof obj[key] === 'object'){
-            copied = obj[key];            
-            return copied;
-        }
-        // } else {
-        //     return obj[key];
-        // }
-    }   
-    return Object.assign(obj, copied); 
-} 
+function convert(obj) {   
+    getProp(obj);
+        function getProp(obj) {
+        for(let key in obj) {
+            if(typeof(obj[key]) === 'object') {
+               return getProp(obj[key]);                                                      
+            }  else {
+                return obj[key]; 
+            }                      
+        }                   
+    }         
+}
 
 const newObj = convert(obj);   
 console.log(newObj);
+
+
+
+
+// function convert(object) {
+//     for (let key in obj){
+//         if (typeof obj[key] === 'object'){
+//             copied = obj[key];            
+//             return copied;
+//         }
+//         // } else {
+//         //     return obj[key];
+//         // }
+//     }   
+//     return Object.assign(obj, copied); 
+// } 
+
+// const newObj = convert(obj);   
+// console.log(newObj);
