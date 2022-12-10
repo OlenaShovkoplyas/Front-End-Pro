@@ -12,7 +12,6 @@
 //     z: 30
 // }
 
-
 let obj1 = {x: 10}; 
 let obj2 = {x: 20, z: 30};
 
@@ -33,22 +32,12 @@ function assignObjects() {
    const newObj = assignObjects(obj1, obj2)
     console.log(newObj);
 
+
+    // Вариант 2
+
+    // function assignObjects(obj1, obj2){
+    //     return Object.assign({}, obj1, obj2);
+    // }
+    // console.log(assignObjects(obj1, obj2));
    
-
-function assignObjects() {
-    let args = arguments,
-        commonObj = {},
-        obj1 = args[0],
-        obj2 = args[1];               
-    for (let key in obj1) {
-        commonObj[key] = obj1[key];
-    }
-    for (let key in obj2) {
-        commonObj[key] = obj2[key];
-        }
-        return commonObj;        
-    }
-
-   const newObj = assignObjects(obj1, obj2)
-    console.log(newObj);
 
