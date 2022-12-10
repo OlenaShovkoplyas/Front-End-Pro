@@ -21,18 +21,18 @@ let obj1 = {
 
 function assignObjects() {
     let args = arguments,
-        resobj = {},
+        commonObj = {},
         obj1 = args[0],
         obj2 = args[1],
         last = args[args.length - 1];
         
     for (let key in obj1) {
-        resobj[key] = obj1[key];
+        commonObj[key] = obj1[key];
     }
     for (let key in obj2) {
-        resobj[key] = obj2[key];
+        commonObj[key] = obj2[key];
         }
-        return resobj;        
+        return commonObj;        
     }
 
    const newObj = assignObjects(obj1, obj2)
