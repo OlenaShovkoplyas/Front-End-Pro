@@ -26,6 +26,7 @@ function convert(obj) {
     getProp(obj);
         function getProp(obj) {
         for(let key in obj) {
+            
             if(typeof(obj[key]) === 'object') {
                return getProp(obj[key]);                                                      
             }  else {
