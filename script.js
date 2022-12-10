@@ -22,38 +22,18 @@ const obj = {
     }
 };
 
-function convert(obj) {   
-    getProp(obj);
-        function getProp(obj) {
-        for(let key in obj) {
-            
+function convert(obj) {  
+    let newObj = {}; 
+        for(let key in obj) {         
             if(typeof(obj[key]) === 'object') {
-               return getProp(obj[key]);                                                      
+                const newObj2 = convert(obj[key]); 
+                for(let key in newObj2) {
+                    newObj[key] = newObj2[key];
+                }                                
             }  else {
-                return obj[key]; 
+                newObj[key] = obj[key];
             }                      
-        }                   
-    }         
-}
-
-const newObj = convert(obj);   
-console.log(newObj);
-
-
-
-
-// function convert(object) {
-//     for (let key in obj){
-//         if (typeof obj[key] === 'object'){
-//             copied = obj[key];            
-//             return copied;
-//         }
-//         // } else {
-//         //     return obj[key];
-//         // }
-//     }   
-//     return Object.assign(obj, copied); 
-// } 
-
-// const newObj = convert(obj);   
-// console.log(newObj);
+        }     
+        return newObj;                   
+    } 
+console.log(convert(obj));
