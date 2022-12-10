@@ -23,9 +23,7 @@ function assignObjects() {
     let args = arguments,
         commonObj = {},
         obj1 = args[0],
-        obj2 = args[1],
-        last = args[args.length - 1];
-        
+        obj2 = args[1];               
     for (let key in obj1) {
         commonObj[key] = obj1[key];
     }
