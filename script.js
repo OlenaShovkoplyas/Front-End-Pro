@@ -12,12 +12,8 @@
 //     z: 30
 // }
 
-let obj1 = {
-    x: 10    
-},  obj2 = {
-    x: 20, 
-    z: 30
-}
+let obj1 = {x: 10}; 
+let obj2 = {x: 20, z: 30};
 
 function assignObjects() {
     let args = arguments,
