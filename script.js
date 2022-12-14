@@ -1,14 +1,3 @@
-// let marvelHeroes = [
-// 	{name: "Thor"},
-// 	{name: "Spider Man"}
-// ];
-
-// let dcHeroes = [
-// 	{name: "Superman"},
-// 	{name: "Batman"},
-// 	{name: "Deadpool"}
-// ];
-
 //Задача:
 // В Array.prototype добавить свойство с названием heroesRender в значении которого находится функция.
 // Даная функция может вызываться в контексте любого массива и в качестве входящего аргумента принимает название папки ('dc', 'marvel'), 
@@ -49,45 +38,30 @@
 		{name: "Deadpool"}
 	];
 
-	Array.prototype.heroesRender = function(persones) {
-		let newArray = [];
-		for(let i = 0; i < this.length; i++) {
-		    this[this.length] = arguments[i];
-		}
+
+Array.prototype.heroesRender = function(folder) {
+	const Trs = this
+	.map(function(heroes) {
+		return `
+			<tr>
+				<td>${heroes.name}</td>
+				<td><img src="img/${folder}/${heroes.name.toLowerCase().replace(' ', '')}.svg" alt="${heroes.name}" width="50px"></img></td>
+			</tr>
+		`
+		}).join("");
+	
+	document.write(`
+		<table>
+			<thead>
+					<tr>
+						<th>Name</th>
+						<th>Icon</th>
+					</tr>
+				</thead>
+				<tbody>${Trs}</tbody>
+			</table>
+		`)
 	}
-
-	//Вариант преп.
-
-// suit =['clubs','spades','diamonds','hearts'];
-// picture = ['jack','queen','king','t'];
-// cards = [];
-
-// for(i=2; i<=10; i++){
-//     for(j=0; j<suit.length; j++){
-//         cardInfo=`<div class="card__info">${i}<img src="images/${suit[j]}.svg" alt="${suit[j]}"></div>`;
-
-//     cards.push(`<div class="card">
-//         ${cardInfo}
-//         ${cardInfo}
-//     </div>`);
-//     }
-// }
-
-// for(i=0; i<picture.length; i++){
-//     for(j=0; j<suit.length; j++){
-//         cardInfo=`<div class="card__info">
-//             ${picture[i][0].toUpperCase()}
-//             <img src="images/${suit[j]}.svg" alt="${suit[j]}">
-//         </div>`;
-
-//         centerImg = picture[i] !== 't' ? picture[i] : suit[j];
-
-//         cards.push(`<div class="card card--person">
-//             ${cardInfo}
-//             <img class="person" src="images/${centerImg}.svg" alt="${centerImg}">
-//             ${cardInfo}
-//         </div>`);
-//     }
-// }
-
-// document.write(`<div class=wrapper>${cards.join(``)}</div>`);
+	
+marvelHeroes.heroesRender("marvel");
+dcHeroes.heroesRender("dc");	
