@@ -72,3 +72,48 @@ let cosmeticsProducts = [
 		price: 300,
 	}
 ];
+
+function Product(category, type, price) {
+    this.category = category;
+    this.type = type;
+    this.price = price;
+    this.render = function () {
+        return `
+            <tr>
+                <td><img src="img/${this.category}/${this.type}.svg" alt="${this.category}" width="50" height="50"></td>
+                <td>${this.type}</td>
+                <td>${this.price} USD</td>
+            </tr>
+        `
+    }
+}
+
+function getTrs(category, objArray) {
+const Trs = objArray
+	.map(function(product) {
+		return new Product(category, product.type, product.price);				
+	})
+	.map(function (product) {
+		return product.render();
+	})
+	.join("");
+	return Trs;
+}
+
+
+document.write(`
+	<table>
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+        ${getTrs('kitchen', kitchenProducts)}
+        ${getTrs('devices', devicesProducts)}
+        ${getTrs('cosmetics', cosmeticsProducts)}
+    </tbody>
+	</table>
+`)
