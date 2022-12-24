@@ -77,10 +77,10 @@ function Product(category, type, price) {
     this.category = category;
     this.type = type;
     this.price = price;
-    this.render = function () {
+    this.render = function() {
         return `
             <tr>
-                <td><img src="img/${this.category}/${this.type}.svg" alt="${this.category}" width="50" height="50"></td>
+                <td><img src="img/${this.category}/${this.type}.svg" alt="${this.type}" width="50"></td>
                 <td>${this.type}</td>
                 <td>${this.price} USD</td>
             </tr>
@@ -96,7 +96,7 @@ const Trs = objArray
 	.map(function (product) {
 		return product.render();
 	})
-	.join("");
+	.join(" ");
 	return Trs;
 }
 
