@@ -20,14 +20,16 @@ function Human(firstName, lastName, age) {
     this.getInfoAboutHuman = function() {
 	 	return `My name is ${this.firstName} ${this.lastName}. I'm ${this.age} years old.`        
 	}
+    this.getInfoAboutForCar = function() {
+        return `${this.firstName} ${this.lastName}.`        
+   }
 }
 
-const humanElen = new Human('Elen', 'Shovkoplyas', 89);
+const humanElen = new Human('Elen', 'Shovkoplyas', 37);
 const HumanOleg = new Human('Oleg', 'Gladkov', 12);
 
 console.log(humanElen.getInfoAboutHuman());
 console.log(HumanOleg.getInfoAboutHuman());
-
 
 // 2. Створити клас Автомобіль.
 // Властивості:
@@ -54,17 +56,17 @@ function Car(brand, model, releaseYear, licensePlate) {
         }
 
     this.getCarInfo = function() {
-            if(this.owner === 'object'){
-                console.log(`Car brand: ${this.brand}; Model: ${this.model}; Year of release: ${this.releaseYear}; Car license plate: ${this.licensePlate}. Owner: ${this.owner}`);
+        let standartInfoCar = `Car brand: ${this.brand}; Model: ${this.model}; Year of release: ${this.releaseYear}; Car license plate: ${this.licensePlate}.`;
+            if(this.owner !== undefined){
+               console.log(`${standartInfoCar}  Owner: ${this.owner.getInfoAboutForCar()}`);
         } else {
-                console.log(`Car brand: ${this.brand}; Model: ${this.model}; Year of release: ${this.releaseYear}; Car license plate: ${this.licensePlate}.  Owner: No owner`);
+                console.log(`${standartInfoCar} Owner: No owner`);
         }        
        }
     }    
 }
 
 const carFord = new Car('Ford', 'Mondeo', 2010, 'АА2515ВЕ');
-
 carFord.getOwner(HumanOleg);
 console.log(carFord.getCarInfo());
 
