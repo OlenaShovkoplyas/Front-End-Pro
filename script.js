@@ -1,7 +1,6 @@
 // Задача:
 // Создать функцию-конструктор Product, которая принимает на вход аргументы category, type, price 
 // и присваивать их полям объекта c соответствующим названием ключа.
-
 // Каждому объекту созданному с помощью функции-конструктор Product доступна функция render, которая возвращает строку вида: 
 // `<tr>
 // 	<td><img src="images/kitchen/grater.svg" alt="grater" width="50" height="50"></td>
@@ -9,7 +8,6 @@
 // 	<td>10 USD</td>
 // </tr>`
 // Все заданные продукты создаем с помощью функции-конструктор Product и для всех вызываем метод render().
-
 // В результате необходимо отрендерить на странице таблицу с выводом данных о всех продуктах.
 
 let kitchenProducts = [
@@ -72,7 +70,7 @@ let cosmeticsProducts = [
 		price: 300,
 	}
 ];
-
+//оптимизированный вариант
 function Product(category, type, price) {
     this.category = category;
     this.type = type;
@@ -88,18 +86,28 @@ function Product(category, type, price) {
     }
 }
 
-function getTrs(category, objArray) {
-const Trs = objArray
-	.map(function(product) {
-		return new Product(category, product.type, product.price);				
-	})
-	.map(function (product) {
-		return product.render();
-	})
-	.join(" ");
-	return Trs;
+function makeProduct(category, list){
+    return list
+    	.map(function(product){
+    		return new Product(category, product.type, product.price);
+    	})
+}
+const products = {
+	kitchen: kitchenProducts,
+	devices: devicesProducts,
+	cosmetics: cosmeticsProducts
 }
 
+let productsList = [];
+for(let key in products){
+	productsList.push(...makeProduct(key, products[key]));
+}
+
+let finishProducts = productsList
+    .map(function(obj){
+        return obj.render()
+    })
+    .join('');
 
 document.write(`
 	<table>
@@ -111,37 +119,55 @@ document.write(`
 			</tr>
 		</thead>
 		<tbody>
-        ${getTrs('kitchen', kitchenProducts)}
-        ${getTrs('devices', devicesProducts)}
-        ${getTrs('cosmetics', cosmeticsProducts)}
+        ${finishProducts}        
     </tbody>
 	</table>
 `)
 
 
 
-//optimization
-
-// function makeProduct(category, list){
-//     return list
-//     	.map(function(product){
-//     		return new Products(category, product.type, product.price);
-//     	})
+//мой вариант
+// function Product(category, type, price) {
+//     this.category = category;
+//     this.type = type;
+//     this.price = price;
+//     this.render = function() {
+//         return `
+//             <tr>
+//                 <td><img src="img/${this.category}/${this.type}.svg" alt="${this.type}" width="50"></td>
+//                 <td>${this.type}</td>
+//                 <td>${this.price} USD</td>
+//             </tr>
+//         `
+//     }
 // }
 
-// const products = {
-// 	kitchen: kitchenProducts,
-// 	devices: devicesProducts,
-// 	cosmetics: cosmeticsProducts
+// function getTrs(category, objArray) {
+// const Trs = objArray
+// 	.map(function(product) {
+// 		return new Product(category, product.type, product.price);				
+// 	})
+// 	.map(function (product) {
+// 		return product.render();
+// 	})
+// 	.join(" ");
+// 	return Trs;
 // }
 
-// let productsList = [];
-// for(let key in products){
-// 	productsList.push(...makeProduct(key, products[key]));
-// }
 
-// let finishProducts = productsList
-//     .map(function(obj){
-//         return obj.render()
-//     })
-//     .join('');	
+// document.write(`
+// 	<table>
+// 		<thead>
+// 			<tr>
+// 				<th>Image</th>
+// 				<th>Name</th>
+// 				<th>Price</th>
+// 			</tr>
+// 		</thead>
+// 		<tbody>
+//         ${getTrs('kitchen', kitchenProducts)}
+//         ${getTrs('devices', devicesProducts)}
+//         ${getTrs('cosmetics', cosmeticsProducts)}
+//     </tbody>
+// 	</table>
+// `)
