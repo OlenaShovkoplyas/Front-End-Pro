@@ -9,3 +9,35 @@
 
 // p = new SuperMath();
 // p.check(obj); // --> no p.input() -> 3 prompt -> рахує
+
+
+class SuperMath {
+    constructor(mark, model, kuzov)
+}
+
+
+
+// class Car {
+// 	constructor(mark, model, kuzov) {
+// 		this.mark = mark;
+// 		this.model = model;
+// 		this.kuzov = kuzov;
+// 	}
+
+// 	render() {
+// 		let list = [];
+	
+// 		for(let key in this) {
+// 			list.push(`<li>${key}: ${this[key]}</li>`);
+// 		}
+	
+// 		return list.join("");
+// 	}
+// }
+
+// const BMW = new Car("BMW", "X5", "universal");
+// const Audi = new Car("Audi", "S5", "sedan", 350);
+
+
+// console.log(BMW);
+// console.log(Audi);
