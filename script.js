@@ -7,10 +7,6 @@
 // p = new SuperMath();
 // p.check(obj); // --> no p.input() -> 3 prompt -> рахує
 
-
-
-
-
 const OPERATIONS = {
 	"+": function(x, y) { return x + y },
 	"-": function(x, y) { return x - y },
@@ -21,6 +17,14 @@ const OPERATIONS = {
 class SuperMath {
 	constructor() {
 		this.input();
+	}
+
+    getOperands() {
+		let operands = [];
+		for(let key in OPERATIONS) {
+			operands.push(key);
+		}
+		return operands.join(", ")
 	}
 
    input() {
@@ -35,23 +39,44 @@ class SuperMath {
 		do {
 			this.znak = prompt(`Enter operands: ${this.getOperands()}`)
 		} while(!OPERATIONS[this.znak]);
-	}
-
-    getOperands() {
-		let operands = [];
-		for(let key in OPERATIONS) {
-			operands.push(key);
-		}
-
-		return operands.join(", ")
-	}
+	} 
 
 	check() {
-		let userApproved = confirm(`Do you want make operation ${this.x} ${this.znak} ${this.y}?`);
+		let userApproved = confirm(`Do you want to make this operation ${this.x} ${this.znak} ${this.y}?`);
 
 		return userApproved ? OPERATIONS[this.znak](this.x, this.y) : this.input().check();
 	}	
 }
+
 const obj = new SuperMath();
 
-alert(`Result is ${obj.check()}`);
+alert(`Result is: ${obj.check()}`);
+
+
+
+// const calculations = [
+//     {
+//         znak: "+";
+//         operation: "x + y"
+//     },
+//     {
+//         znak: "-";
+//         operation: "x - y"
+//     },
+//     {
+//         znak: "*";
+//         operation: "x * y"
+//     },
+//     {
+//         znak: "/";
+//         operation: "x / y"
+//     }
+// ];
+
+// const obj = {
+// "x + y": 
+// }
+
+// calculations.forEach(function(calculation)) {
+//     calculations.operation = obj[calculations.operation];
+// }
