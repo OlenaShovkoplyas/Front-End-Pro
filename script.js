@@ -221,16 +221,15 @@ class Admin extends User {
 	}
 }
 
-function markGradation (gradationObject, mark) {
-	let grade = `test Grade`
-	for (let key in gradationObject){
+function markGradation (mark) {
+	let grade;	
+	for (let key in gradation){
 		if (mark <= key){
-			grade = gradationObject[key]
-			break
-						
+			grade = gradation[key]			
+			break;						
 		}
 	}
-	return grade;	
+	return grade;
 };
 
 users.filter(user => user.courses)
@@ -244,9 +243,8 @@ users.filter(user => user.courses)
 			course.scoreGradation = markGradation(course.score);
 		if(course.studentScore)
 			course.scoreStudentScore = markGradation(course.studentScore);			
-	})
-	return userCourses.map;
-	// console.log(user.courses);
+	})		
+	console.log(userCourses);	
 })
 
 
@@ -259,43 +257,15 @@ const ROLES = {
 function renderNewUsers(array){
 	let users = array
 	.map(user => ROLES[user.role] ? ROLES[user.role](user) : new User(user))
-	.map(user => {	
-		console.log(user);	
+	.map(user => {			
 		return user;		
 	})
-	.map(user => user.renderInfoUser())		
+	.map(user => user.renderInfoUser())	
 	.join(``);	
-	
+	renderNewUsers(users);
 }
-renderNewUsers(users);
+
+const allUsers = renderNewUsers(users);
 
 
-
-
-
-// let usersArray = [];
-
-// function createNewUsers(users) {
-// 	users
-// 		.map(function (user) {
-// 			if (user.role === "student") return new Student(user);
-// 			if (user.role === "lector") return new Lector(user);
-// 			if (user.role === "admin") return new Admin(user);
-// 			return userCourses.map;
-// 		}) 
-// 		.forEach(function (user) {
-// 			score = [];
-// 			if (!user.courses)
-// 			usersArray.push(user.renderInfoUser());
-// 			else {
-// 				score = user.renderCourses(gradation);
-// 				usersArray.push(user.renderInfoUser(score));
-// 			}	
-// 			return usersArray;			
-// 		})		
-// };
-
-// createNewUsers(users);
-// console.log(createNewUsers(users));
-
-// document.write(`<div class="users">${usersArray}</div>`);
+document.write(`<div class="users">${allUsers}</div>`);
