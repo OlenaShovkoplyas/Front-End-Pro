@@ -1,5 +1,4 @@
 // Файл script.js содержит данные:
-
 // users – массив юзеров системы.
 // roles – объект ролей юзера.
 // gradation – объект с диапазоном оценок.
@@ -17,9 +16,9 @@
 // Заданную html-разметку и css-классы для каждого блока можете править как хотите) Главное – визуально отобразить так, как на картинке.
 
 const roles = {
-	admin: "img/admin.png",
-	student: "img/student.png",
-	lector: "img/lector.png"
+	admin: "img/admin",
+	student: "img/student",
+	lector: "img/lector"
 };
 
 const gradation = {
@@ -135,16 +134,18 @@ const users = [
 		role: "admin"
 
 	}
-]
+];
 
 class  User {
-	constructor(name, age, img, role) {
-		this.name = name;
-		this.age = age;
-		this.img = img;
-		this.role = role;
+	constructor(args) {
+		this.name = args.name;
+		this.age = args.age;
+		this.img = args.img;
+		this.role = args.role;
+		this.courses = args.courses;
 	}	
-	renderInfoUser () {
+	
+	renderInfoUser () {		
 		return `
 		<div class="user">
 	        <div class="user__info">
@@ -160,23 +161,22 @@ class  User {
 	            <p>${this.role}</p>
 	        </div>
 	    </div>`;
-		}
+		}	
 	
-	renderCourses(){
-		let coursesTitle = this.courses
-		.map(tite => {
-			return `<div class="user__courses--course ${this.role}">
-                <p>Title: <b>${tite.title}</b></p>
-                <p>Admin's score: <span class="${gradeUser(gradation, tite.score)}">${gradeUser(gradation, tite.score)}</span></p>
-                <p>Lector: <b>${tite.lector}</b></p>
-            </div>`;
+	renderCourses(){		
+		let coursesTitle = this.courses		
+		.map(el => {
+			return `<div class="user__courses">
+			<p class="user__courses--course student">
+				${el.title} <span class="${markGradation(gradation, el.score)}">${markGradation(gradation, el.score)}</span>
+			</p>			
+		</div>`;
 		})
-		.join('')
-
+		.join('')		
 		return `<div class="user__courses admin--info">${coursesTitle}</div>`;
-		}
+		}		
 	}
-
+	
 class  Student extends User {
 	constructor(args) {
 		super(args);
@@ -189,11 +189,11 @@ class  Lector extends User {
 	}
 	renderCourses(){
 		let coursesTitle = this.courses
-		.map(tite => {
+		.map(el => {
 			return `<div class="user__courses--course ${this.role}">
-                <p>Title: <b>${tite.title}</b></p>
-                <p>Lector's score: <span class="${gradeUser(gradation, tite.score)}">${gradeUser(gradation, tite.score)}</span></p>
-                <p>Average student's score: <span class="${gradeUser(gradation, tite.score)}">${gradeUser(gradation, tite.score)}</span></p>
+                <p>Title: <b>${el.title}</b></p>
+                <p>Lector's score: <span class="${markGradation(gradation, el.score)}">${markGradation(gradation, el.score)}</span></p>
+                <p>Average student's score: <span class="${markGradation(gradation, el.score)}">${markGradation(gradation, el.score)}</span></p>
             </div>`;
 		})
 		.join('')
@@ -208,11 +208,11 @@ class Admin extends User {
 	}
 	renderCourses(){
 		let coursesTitle = this.courses
-		.map(tite => {
+		.map(el => {
 			return `<div class="user__courses--course ${this.role}">
-					<p>Title: <b>${tite.title}</b></p>
-					<p>Admin's score: <span class="${gradeUser(gradation, tite.score)}">${gradeUser(gradation, tite.score)}</span></p>
-					<p>Lector: <b>${tite.lector}</b></p>
+					<p>Title: <b>${el.title}</b></p>
+					<p>Admin's score: <span class="${markGradation(gradation, el.score)}">${markGradation(gradation, el.score)}</span></p>
+					<p>Lector: <b>${el.lector}</b></p>
 			</div>`;
 		})
 		.join('')
@@ -221,18 +221,21 @@ class Admin extends User {
 	}
 }
 
-function markGradation (mark) {
-	for (let key in gradation){
+function markGradation (gradationObject, mark) {
+	let grade = `test Grade`
+	for (let key in gradationObject){
 		if (mark <= key){
-			return gradation[key]			
+			grade = gradationObject[key]
+			break
+						
 		}
-	}	
+	}
+	return grade;	
 };
 
 users.filter(user => user.courses)
 .forEach(user => {
 	let userCourses = user.courses;
-
 	userCourses
 	.map(course => {
 		if(course.mark)
@@ -240,8 +243,9 @@ users.filter(user => user.courses)
 		if(course.score)
 			course.scoreGradation = markGradation(course.score);
 		if(course.studentScore)
-			course.scoreStudentScore = markGradation(course.studentScore);
+			course.scoreStudentScore = markGradation(course.studentScore);			
 	})
+	return userCourses.map;
 	// console.log(user.courses);
 })
 
@@ -254,15 +258,44 @@ const ROLES = {
 
 function renderNewUsers(array){
 	let users = array
-	.map(user => ROLES[user.role] ? ROLES[user.role](user) : new User(users))
+	.map(user => ROLES[user.role] ? ROLES[user.role](user) : new User(user))
 	.map(user => {	
 		console.log(user);	
 		return user;		
 	})
-	.map(user => user.renderInfoUser())
+	.map(user => user.renderInfoUser())		
 	.join(``);	
+	
 }
 renderNewUsers(users);
 
 
 
+
+
+// let usersArray = [];
+
+// function createNewUsers(users) {
+// 	users
+// 		.map(function (user) {
+// 			if (user.role === "student") return new Student(user);
+// 			if (user.role === "lector") return new Lector(user);
+// 			if (user.role === "admin") return new Admin(user);
+// 			return userCourses.map;
+// 		}) 
+// 		.forEach(function (user) {
+// 			score = [];
+// 			if (!user.courses)
+// 			usersArray.push(user.renderInfoUser());
+// 			else {
+// 				score = user.renderCourses(gradation);
+// 				usersArray.push(user.renderInfoUser(score));
+// 			}	
+// 			return usersArray;			
+// 		})		
+// };
+
+// createNewUsers(users);
+// console.log(createNewUsers(users));
+
+// document.write(`<div class="users">${usersArray}</div>`);
