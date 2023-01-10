@@ -216,49 +216,48 @@ class Admin extends User {
 	}
 }
 
-function markGradation(gradation, mark) {
-    for(let key in gradation) {
-        if(mark > 0 && mark <= 20) {
-            return  "satisfactory"
-        }
-        if(mark > 20 && mark <= 55) {
-            return "good"
-        }
-        if(mark > 55 && mark <= 85) {
-            return "very-good"
-        }
-        if(mark > 85 && mark <= 100) {
-            return "excellent"
-        }
-    }
-}
+function markGradation (gradation, mark) {
+	let grade;	
+	for (let key in gradation){
+		if (mark <= key){
+			grade = gradation[key]			
+			break;						
+		}
+	}
+	return grade;
+};
 
-// function markGradation (gradation, mark) {
-// 	let grade;	
-// 	for (let key in gradation){
-// 		if (mark <= key){
-// 			grade = gradation[key]			
-// 			break;						
-// 		}
-// 	}
-// 	return grade;
-// };
+users.filter(user => user.courses)
+.forEach(user => {
+	let userCourses = user.courses;
+	userCourses
+	.map(course => {
+		if(course.mark)
+			course.markGradation = markGradation(course.mark);
+		if(course.score)
+			course.scoreGradation = markGradation(course.score);
+		if(course.studentScore)
+			course.scoreStudentScore = markGradation(course.studentScore);			
+	})		
+	console.log(userCourses);	
+})
 
-// users.filter(user => user.courses)
-// .forEach(user => {
-// 	let userCourses = user.courses;
-// 	userCourses
-// 	.map(course => {
-// 		if(course.mark)
-// 			course.markGradation = markGradation(course.mark);
-// 		if(course.score)
-// 			course.scoreGradation = markGradation(course.score);
-// 		if(course.studentScore)
-// 			course.scoreStudentScore = markGradation(course.studentScore);			
-// 	})		
-// 	console.log(userCourses);	
-// })
-
+// function markGradation(gradation, mark) {
+//     for(let key in gradation) {
+//         if(mark > 0 && mark <= 20) {
+//             return  "satisfactory"
+//         }
+//         if(mark > 20 && mark <= 55) {
+//             return "good"
+//         }
+//         if(mark > 55 && mark <= 85) {
+//             return "very-good"
+//         }
+//         if(mark > 85 && mark <= 100) {
+//             return "excellent"
+//         }
+//     }
+// }
 
 const ROLES = {
     "student": user => new Student(user),
